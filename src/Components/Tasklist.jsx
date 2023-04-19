@@ -3,29 +3,25 @@ import {PassignSetData} from '../App'
 
 
 function Tasklist({tasks,items ,categories}){
-
      const [setData,] = useContext(PassignSetData)
-     
 
+     
      /* task handle function */
-     const handlTasks=(id,tasks,category)=>{
+     const handlTasks=(clickedTaskTd,tasks,category)=>{
             let updatedTasck
             /* delete completed  */
-            category=='completed' && (updatedTasck=tasks.filter(items=> items.id!=id ))
+            category=='completed' && (updatedTasck=tasks.filter(items=> items.id!=clickedTaskTd ))
 
             /* chage category */
-            categories.map((cate,i)=>{
-                if(cate==category && category!=categories[categories.length-1]){
-                    tasks.map(ite=>{
-                        if(ite.id==id){
-                            ite.category=categories[i+1]
-                        }
-                    })
-                    updatedTasck=tasks 
+            updatedTasck=tasks.map((itemTask)=>{
+                if(itemTask.id==clickedTaskTd && itemTask.category!='completed'){
+                    itemTask.category= categories[categories.indexOf(itemTask.category)+1]
+                    return itemTask
+                }else{
+                    return itemTask
                 }
-                        
-            })  
-            
+            })
+
             /* setter function */
             setData(({categories})=>{
                 return{
@@ -36,9 +32,11 @@ function Tasklist({tasks,items ,categories}){
                 }
             })
     }
+
+
     return(
         <>
-        {tasks.map(({category,id,task})=>{  
+        {tasks.map(({id,category,task})=>{  
                 return(
                     category==items &&(
                       <div className="taskItem">

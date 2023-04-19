@@ -27,6 +27,7 @@ function Form({setData}){
 
     useEffect(()=>{
         document.querySelector('.taskInput').value=''
+        console.log('redered')
     },[status])
 
     return(
