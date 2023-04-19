@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState,useContext } from "react"
+import {PassignSetData} from '../App' 
 
 
-function Form({setData}){
+function Form(){
     let [inputVal,setInputVal]=useState()
     let [status,setClickStatus]=useState()
+    const [setData,] = useContext(PassignSetData)
 
     /* handle function */
     const handleValue=()=>{

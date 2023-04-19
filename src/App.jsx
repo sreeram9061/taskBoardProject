@@ -13,11 +13,10 @@ function App() {
   return (
     <div className="App">
       < Header/>
-      < Form setData={setData} />
       <PassignSetData.Provider value={[setData,dataList]}>
-          < Board />
+        < Form />
+        < Board />
       </PassignSetData.Provider>
-      
     </div>
   )
 }
