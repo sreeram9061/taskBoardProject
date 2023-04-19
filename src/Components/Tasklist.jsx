@@ -13,14 +13,15 @@ function Tasklist({tasks,items ,categories}){
             category=='completed' && (updatedTasck=tasks.filter(items=> items.id!=clickedTaskTd ))
 
             /* chage category */
+            category!='completed' &&(
             updatedTasck=tasks.map((itemTask)=>{
-                if(itemTask.id==clickedTaskTd && itemTask.category!='completed'){
+                if(itemTask.id==clickedTaskTd ){
                     itemTask.category= categories[categories.indexOf(itemTask.category)+1]
                     return itemTask
                 }else{
                     return itemTask
                 }
-            })
+            }))
 
             /* setter function */
             setData(({categories})=>{
