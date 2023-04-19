@@ -1,8 +1,12 @@
 import Tasklist from "./Tasklist"
+import { useContext } from "react"
+import {PassignSetData} from '../App' 
 
-function Board({dataList:{categories,tasks}}){
+function Board(){
+    let [,{categories, tasks}]=useContext(PassignSetData)
+    console.log()
     return(
-        <>
+          <>
            <div id="taskBoard">
                {categories.map((items)=>{
                     return(
@@ -18,7 +22,6 @@ function Board({dataList:{categories,tasks}}){
                 })
                } 
            </div>
-
            <div className="footer">React based Task Board App.</div>
         </>
     )

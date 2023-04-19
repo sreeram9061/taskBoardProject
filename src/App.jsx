@@ -14,8 +14,8 @@ function App() {
     <div className="App">
       < Header/>
       < Form setData={setData} />
-      <PassignSetData.Provider value={setData}>
-          < Board dataList={dataList}/>
+      <PassignSetData.Provider value={[setData,dataList]}>
+          < Board />
       </PassignSetData.Provider>
       
     </div>

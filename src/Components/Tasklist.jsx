@@ -4,7 +4,8 @@ import {PassignSetData} from '../App'
 
 function Tasklist({tasks,items ,categories}){
 
-     const setData = useContext(PassignSetData)
+     const [setData,] = useContext(PassignSetData)
+     
 
      /* task handle function */
      const handlTasks=(id,tasks,category)=>{
@@ -23,7 +24,9 @@ function Tasklist({tasks,items ,categories}){
                     updatedTasck=tasks 
                 }
                         
-            })    
+            })  
+            
+            /* setter function */
             setData(({categories})=>{
                 return{
                     categories:categories,

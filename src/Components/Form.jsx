@@ -1,10 +1,14 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+
 
 function Form({setData}){
+    let [inputVal,setInputVal]=useState()
+    let [status,setClickStatus]=useState()
 
+    /* handle function */
     const handleValue=()=>{
-        let inputVal=document.querySelector('.taskInput').value
         inputVal &&
+        /* setter function */
         setData(({categories,tasks})=>{
             return {
                 categories:categories,
@@ -17,18 +21,19 @@ function Form({setData}){
                     }
                 ]
             }
-        })  
+        })
+        setClickStatus('clicked')
     }
 
     useEffect(()=>{
         document.querySelector('.taskInput').value=''
-    })
+    },[status])
 
     return(
         <div id="taskForm">
             <h3>Add New Task</h3>
             <div className="formField">
-                <input type="text" className="taskInput" />
+                <input onChange={(newTask)=>setInputVal(newTask.target.value)} type="text" className="taskInput"   />
                 <button onClick={handleValue} className="taskSubmit">Submit</button>
             </div>
         </div>
