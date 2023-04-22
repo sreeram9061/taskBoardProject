@@ -3,8 +3,7 @@ import { useContext } from "react"
 import {PassingSetData} from '../App' 
 
 function Board(){
-    let [,{categories, tasks}]=useContext(PassingSetData)
-    console.log()
+    let [,{categories,}]=useContext(PassingSetData)
     return(
           <>
            <div id="taskBoard">
@@ -15,7 +14,7 @@ function Board(){
                                 <h3>{items}</h3>
                             </div>
                        <div className="taskItems">
-                          < Tasklist tasks={tasks} items={items} categories={categories} />  
+                          < Tasklist items={items} />  
                        </div>
                     </div>
                     )

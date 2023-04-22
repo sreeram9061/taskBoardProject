@@ -26,14 +26,13 @@ function Tasklist({items }){
             /* setter function */
             setData(({categories})=>{
                 return{
-                    categories:categories,
+                    categories,
                     tasks:[
                     ...updatedTasck,
                     ]
                 }
             })
     }
-
 
     return(
         <>
@@ -51,6 +50,8 @@ function Tasklist({items }){
                 )
             })
         }
+
+        
        </>
     )
 }

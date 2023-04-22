@@ -12,7 +12,7 @@ function Form(){
         /* setter function */
         setData(({categories,tasks})=>{
             return {
-                categories:categories,
+                categories,
                 tasks:[
                     ...tasks,
                     {
