@@ -1,14 +1,14 @@
-import { useEffect, useState,useContext } from "react"
+import { useState,useContext } from "react"
 import {PassignSetData} from '../App' 
 
 
 function Form(){
     let [inputVal,setInputVal]=useState()
-    let [status,setClickStatus]=useState()
     const [setData,] = useContext(PassignSetData)
 
     /* handle function */
     const handleValue=()=>{
+        console.log('cliked')
         inputVal &&
         /* setter function */
         setData(({categories,tasks})=>{
@@ -24,18 +24,14 @@ function Form(){
                 ]
             }
         })
-        setClickStatus('clicked')
+        setInputVal('')
     }
-
-    useEffect(()=>{
-        document.querySelector('.taskInput').value=''
-    },[status])
 
     return(
         <div id="taskForm">
             <h3>Add New Task</h3>
             <div className="formField">
-                <input onChange={(newTask)=>setInputVal(newTask.target.value)} type="text" className="taskInput"   />
+                <input value={inputVal} onChange={(newTask)=>setInputVal(newTask.target.value)} type="text" className="taskInput"   />
                 <button onClick={handleValue} className="taskSubmit">Submit</button>
             </div>
         </div>
