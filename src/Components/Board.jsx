@@ -1,9 +1,9 @@
 import Tasklist from "./Tasklist"
 import { useContext } from "react"
-import {PassignSetData} from '../App' 
+import {PassingSetData} from '../App' 
 
 function Board(){
-    let [,{categories, tasks}]=useContext(PassignSetData)
+    let [,{categories, tasks}]=useContext(PassingSetData)
     console.log()
     return(
           <>

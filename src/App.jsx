@@ -6,17 +6,17 @@ import { useState } from 'react'
 import {data} from './data'
 import { createContext } from 'react'
 
-export const PassignSetData=createContext()
+export const PassingSetData=createContext()
 
 function App() {
   let [dataList, setData]=useState(data) 
   return (
     <div className="App">
       < Header/>
-      <PassignSetData.Provider value={[setData,dataList]}>
+      <PassingSetData.Provider value={[setData,dataList]}>
         < Form />
         < Board />
-      </PassignSetData.Provider>
+      </PassingSetData.Provider>
     </div>
   )
 }

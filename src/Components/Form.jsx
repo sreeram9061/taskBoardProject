@@ -1,14 +1,13 @@
 import { useState,useContext } from "react"
-import {PassignSetData} from '../App' 
+import {PassingSetData} from '../App' 
 
 
 function Form(){
     let [inputVal,setInputVal]=useState()
-    const [setData,] = useContext(PassignSetData)
+    const [setData,] = useContext(PassingSetData)
 
     /* handle function */
     const handleValue=()=>{
-        console.log('cliked')
         inputVal &&
         /* setter function */
         setData(({categories,tasks})=>{

@@ -1,21 +1,21 @@
 import { useContext } from "react"
-import {PassignSetData} from '../App' 
+import {PassingSetData} from '../App' 
 
 
-function Tasklist({tasks,items ,categories}){
-     const [setData,] = useContext(PassignSetData)
+function Tasklist({items }){
+     const [setData,{categories, tasks}] = useContext(PassingSetData)
 
      
      /* task handle function */
-     const handlTasks=(clickedTaskTd,tasks,category)=>{
+     const handlTasks=(clickedTaskId,category)=>{
             let updatedTasck
             /* delete completed  */
-            category=='completed' && (updatedTasck=tasks.filter(items=> items.id!=clickedTaskTd ))
+            category=='completed' && (updatedTasck=tasks.filter(items=> items.id!=clickedTaskId ))
 
             /* chage category */
             category!='completed' &&(
             updatedTasck=tasks.map((itemTask)=>{
-                if(itemTask.id==clickedTaskTd ){
+                if(itemTask.id==clickedTaskId ){
                     itemTask.category= categories[categories.indexOf(itemTask.category)+1]
                     return itemTask
                 }else{
@@ -42,7 +42,7 @@ function Tasklist({tasks,items ,categories}){
                     category==items &&(
                       <div className="taskItem">
                           <p>{task}</p>
-                          <button onClick={()=>{handlTasks(id,tasks ,category )}}
+                          <button onClick={()=>{handlTasks(id ,category )}}
                            className={items=='completed' ? 'taskButton delete' : 'taskButton move'}>{
                             items==`completed` ? `Delete` : `Move`}</button>
                       </div>
