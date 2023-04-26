@@ -1,39 +1,13 @@
 import { useContext } from "react"
-import {PassingSetData} from '../App' 
-
+import { AppData } from "../context/Appcontext"
+import { AppDispath } from "../context/Appcontext"
+import { handleTaskCategory } from "../Functions/handleTasks"
 
 function Tasklist({items }){
-     const [setData,{categories, tasks}] = useContext(PassingSetData)
+     const {categories, tasks} = useContext(AppData)
+     const dispath = useContext(AppDispath)
 
      
-     /* task handle function */
-     const handlTasks=(clickedTaskId,category)=>{
-            let updatedTasck
-            /* delete completed  */
-            category=='completed' && (updatedTasck=tasks.filter(items=> items.id!=clickedTaskId ))
-
-            /* chage category */
-            category!='completed' &&(
-            updatedTasck=tasks.map((itemTask)=>{
-                if(itemTask.id==clickedTaskId ){
-                    itemTask.category= categories[categories.indexOf(itemTask.category)+1]
-                    return itemTask
-                }else{
-                    return itemTask
-                }
-            }))
-
-            /* setter function */
-            setData(({categories})=>{
-                return{
-                    categories,
-                    tasks:[
-                    ...updatedTasck,
-                    ]
-                }
-            })
-    }
-
     return(
         <>
         {tasks.map(({id,category,task})=>{  
@@ -41,7 +15,7 @@ function Tasklist({items }){
                     category==items &&(
                       <div className="taskItem">
                           <p>{task}</p>
-                          <button onClick={()=>{handlTasks(id ,category )}}
+                          <button onClick={()=>{handleTaskCategory(id ,category,categories,tasks,dispath )}}
                            className={items=='completed' ? 'taskButton delete' : 'taskButton move'}>{
                             items==`completed` ? `Delete` : `Move`}</button>
                       </div>
@@ -49,9 +23,7 @@ function Tasklist({items }){
                     )  
                 )
             })
-        }
-
-        
+        }        
        </>
     )
 }

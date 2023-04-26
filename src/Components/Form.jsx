@@ -1,27 +1,17 @@
 import { useState,useContext } from "react"
-import {PassingSetData} from '../App' 
-
-
+import { AppDispath } from "../context/Appcontext"
 function Form(){
-    let [inputVal,setInputVal]=useState()
-    const [setData,] = useContext(PassingSetData)
+
+    let [inputVal,setInputVal]=useState("")
+    const dispath = useContext(AppDispath)
 
     /* handle function */
     const handleValue=()=>{
+
         inputVal &&
-        /* setter function */
-        setData(({categories,tasks})=>{
-            return {
-                categories,
-                tasks:[
-                    ...tasks,
-                    {
-                        id: tasks.length!=0 ?(tasks[(tasks.length-1)].id)+1 : 2500,
-                        category: categories[0],
-                        task:inputVal
-                    }
-                ]
-            }
+        dispath({
+            type:'SET_NEW_VALUE',
+            payload:inputVal
         })
         setInputVal('')
     }
